@@ -2,6 +2,7 @@
 
 import serial
 import time
+import sys
 
 class DataPacket(object):
 
@@ -161,3 +162,4 @@ with serial.Serial("/dev/ttyUSB0", baudrate=4800, timeout=1) as serdev:
         data_string += str(data_packet.Value) + ", " + data_packet.Unit
 
         print(data_string)
+        sys.stdout.flush()
