@@ -16,7 +16,7 @@ simple use (stdout only):
 ...
 ```
 
-using an different device and log to file:
+using a different device and log to file:
 
 ```bash
 >./peaktech_4390.py --device=/dev/ttyUSB2 | tee log.csv
