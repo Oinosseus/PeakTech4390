@@ -3,6 +3,7 @@
 import serial
 import time
 import sys
+import argparse
 
 class DataPacket(object):
 
@@ -151,15 +152,41 @@ def wait4packet(serdev):
 
 
 def main():
+
+    # -------------------------------------------------------------------------
+    #                               argparse
+    # -------------------------------------------------------------------------
+
+    # program description
+    description  = "Data logging from PeakTech 4390 multimeter.\n "
+    description += "To store output in a file: '" + __file__ + " | tee log.csv'"
+
+    # create parser
+    parser = argparse.ArgumentParser(description=description)
+
+    # device option
+    parser.add_argument('-d', '--device', action="store",
+                        default="/dev/ttyUSB0", type=str,
+                        help="This is the ttyUSB device of the multimeter (default: /dev/ttyUSB0)")
+
+    # parse
+    args = parser.parse_args()
+
+
+
+    # -------------------------------------------------------------------------
+    #                               main loop
+    # -------------------------------------------------------------------------
+
     time_start = time.time()
-    with serial.Serial("/dev/ttyUSB0", baudrate=4800, timeout=1) as serdev:
+    with serial.Serial(args.device, baudrate=4800, timeout=1) as serdev:
 
         while True:
             data_packet = wait4packet(serdev)
             time_passed = time.time() - time_start
 
             data_string  = ""
-            data_string += "%0.4f, s"%time_passed
+            data_string += "%0.4f, s" % time_passed
             data_string += ", "
             data_string += str(data_packet.Value) + ", " + data_packet.Unit
 
