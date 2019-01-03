@@ -149,17 +149,24 @@ def wait4packet(serdev):
     return DataPacket(raw_packet)
 
 
-time_start = time.time()
-with serial.Serial("/dev/ttyUSB0", baudrate=4800, timeout=1) as serdev:
 
-    while True:
-        data_packet = wait4packet(serdev)
-        time_passed = time.time() - time_start
+def main():
+    time_start = time.time()
+    with serial.Serial("/dev/ttyUSB0", baudrate=4800, timeout=1) as serdev:
 
-        data_string  = ""
-        data_string += "%0.4f, s"%time_passed
-        data_string += ", "
-        data_string += str(data_packet.Value) + ", " + data_packet.Unit
+        while True:
+            data_packet = wait4packet(serdev)
+            time_passed = time.time() - time_start
 
-        print(data_string)
-        sys.stdout.flush()
+            data_string  = ""
+            data_string += "%0.4f, s"%time_passed
+            data_string += ", "
+            data_string += str(data_packet.Value) + ", " + data_packet.Unit
+
+            print(data_string)
+            sys.stdout.flush()
+
+
+
+if __name__ == "__main__":
+    main()
