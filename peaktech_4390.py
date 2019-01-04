@@ -103,24 +103,23 @@ class DataPacket(object):
         if self.__rawdata[7] & (1 << 5):
             self.Unit += "M"
 
-
         # determine unit
         if self.__rawdata[6] & (1 << 6):
-            self.Unit = "Ohm"
+            self.Unit += "Ohm"
         if self.__rawdata[7] & (1 << 6):
-            self.Unit = "%"
+            self.Unit += "%"
         if self.__rawdata[7] & (1 << 2):
-            self.Unit = "F"
+            self.Unit += "F"
         if self.__rawdata[8] & (1 << 7):
-            self.Unit = "degF"
+            self.Unit += "degF"
         if self.__rawdata[8] & (1 << 6):
-            self.Unit = "degC"
+            self.Unit += "degC"
         if self.__rawdata[8] & (1 << 3):
-            self.Unit = "A"
+            self.Unit += "A"
         if self.__rawdata[8] & (1 << 2):
-            self.Unit = "V"
+            self.Unit += "V"
         if self.__rawdata[8] & (1 << 1):
-            self.Unit = "Hz"
+            self.Unit += "Hz"
 
 
 def b2i(bytes):
