@@ -32,7 +32,7 @@ using a different device and log to file:
 This tool can use the data, generated from peaktech_4390.py and generate simple diagrams
 from it by using matplotlib.
 
-##Examples
+## Examples
 
 Show a diagram from a log file
 
