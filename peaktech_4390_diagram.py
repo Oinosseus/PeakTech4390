@@ -226,7 +226,8 @@ def main():
         ax.set_ylabel(mDataLogsContainer.YUnits[i])
         ax.legend()
         ax.grid(axis = 'both')
-
+        ax.xaxis.grid(linewidth=1.0, linestyle="dotted")
+        ax.yaxis.grid(linewidth=1.0, linestyle="dotted")
 
 
     # -------------------------------------------------------------------------
