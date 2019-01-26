@@ -43,7 +43,7 @@ Show a diagram from a log file
 Find all *.csv file in a directory, process them and export the diagram to a file
 
 ```bash
->find watercooker/ -name "*.csv" | xargs ./peaktech_4390_diagram.py -o watercooker/graph_nonzero.svg
+>find watercooker/ -name "*.csv" | xargs ./peaktech_4390_diagram.py --output watercooker/graph_nonzero.svg
 ```
 
 ![generated graph](watercooker/graph_nonzero.svg "generated graph")
@@ -53,7 +53,7 @@ It can be done by specifying a zero-align parameter.
 With this the x axis zero is shifted for every data log to where the y axis values crosses the zero-align value first.
 
 ```bash
->find watercooker/ -name "*.csv" | xargs ./peaktech_4390_diagram.py -o watercooker/graph_zeroalign.svg -z 100
+>find watercooker/ -name "*.csv" | xargs ./peaktech_4390_diagram.py --output watercooker/graph_zeroalign.svg --zero-align 100
 ```
 
 ![generated graph zero-aligned](watercooker/graph_zeroalign.svg "generated graph zero aligned")
